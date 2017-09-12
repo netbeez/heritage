@@ -14,9 +14,9 @@ module Heritage
         class_attribute :_acts_as_predecessor_settings
         self._acts_as_predecessor_settings = options
 
-        belongs_to :heir, :polymorphic => true
+        belongs_to :heir, polymorphic: true, optional: true
 
-        before_update :touch_heir, :unless => lambda { heir.changed? }
+        before_update :touch_heir, unless: lambda { heir.changed? }
       end
 
       module ClassMethods
